@@ -73,11 +73,10 @@ A forma mais fácil e visual de testar é usando o **[Postman](https://www.postm
 
 #### Collection pronta (já configurada)
 
-Na pasta `postman/` deste projeto existe o arquivo:
+A collection do Postman está disponível no link abaixo:
 
-```
-postman/Associados_API.postman_collection.json
-```
+[Clique aqui para baixar a Collection do Postman
+](https://drive.google.com/file/d/1UGdGdpyC3Tgk3X3-sC8krHaa8iRJlNAK/view?usp=sharing)
 
 **Como importar no Postman:**
 
