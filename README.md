@@ -67,6 +67,11 @@ A API estará disponível em: `http://localhost:3000`
 
 ## Exemplos de uso (cURL)
 
+> **Importante:** os exemplos abaixo usam sintaxe de terminal **Bash**.
+> - No **Linux** e **macOS** funciona direto.
+> - No **Windows**, use o **Git Bash** (instalado junto com o Git) ou o WSL.
+> - No PowerShell/CMD os comandos com `\` no final da linha **não funcionam**.
+
 ### Criar associado
 ```bash
 curl -X POST http://localhost:3000/associados \
