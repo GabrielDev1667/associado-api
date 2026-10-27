@@ -118,7 +118,6 @@ class AssociadoService {
 
   /**
    * Exclusão com opção de lógica ou definitiva
-   * Regra de negócio pedida no enunciado
    *
    * @param {string} id - ID do associado
    * @param {string} tipo - 'logica' (padrão) ou 'definitiva'
