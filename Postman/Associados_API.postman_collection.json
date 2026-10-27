@@ -1,0 +1,239 @@
+{
+  "info": {
+    "name": "API de Associados",
+    "description": "Collection completa para testar a API de Associados de Clube.\n\nComo usar:\n1. Suba a API com: npm start\n2. Importe esta collection no Postman\n3. Execute as requests na ordem (Criar → Listar → Buscar → etc.)",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "1. Criar Associado",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"cpf_associado\": \"12345678901\",\n  \"nome_associado\": \"João da Silva\",\n  \"email_associado\": \"joao@email.com\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:3000/associados",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["associados"]
+        },
+        "description": "Cria um novo associado.\n\nApós executar, copie o campo \"id\" da resposta para usar nas próximas requests."
+      },
+      "response": []
+    },
+    {
+      "name": "2. Listar Associados",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3000/associados",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["associados"]
+        },
+        "description": "Lista todos os associados ativos."
+      },
+      "response": []
+    },
+    {
+      "name": "3. Listar Todos (incluindo inativos)",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3000/associados?todos=true",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["associados"],
+          "query": [
+            {
+              "key": "todos",
+              "value": "true"
+            }
+          ]
+        },
+        "description": "Lista todos os associados, incluindo os que sofreram exclusão lógica."
+      },
+      "response": []
+    },
+    {
+      "name": "4. Buscar por CPF",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3000/associados/cpf/12345678901",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["associados", "cpf", "12345678901"]
+        },
+        "description": "Busca um associado pelo CPF."
+      },
+      "response": []
+    },
+    {
+      "name": "5. Buscar por ID",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3000/associados/COLE_O_ID_AQUI",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["associados", "COLE_O_ID_AQUI"]
+        },
+        "description": "Busca um associado pelo ID.\n\nSubstitua COLE_O_ID_AQUI pelo id retornado no passo 1."
+      },
+      "response": []
+    },
+    {
+      "name": "6. Atualizar Associado",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"nome_associado\": \"João Silva Atualizado\",\n  \"email_associado\": \"joao.novo@email.com\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:3000/associados/COLE_O_ID_AQUI",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["associados", "COLE_O_ID_AQUI"]
+        },
+        "description": "Atualiza os dados de um associado.\n\nSubstitua COLE_O_ID_AQUI pelo id retornado no passo 1."
+      },
+      "response": []
+    },
+    {
+      "name": "7. Exclusão Lógica",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3000/associados/COLE_O_ID_AQUI?tipo=logica",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["associados", "COLE_O_ID_AQUI"],
+          "query": [
+            {
+              "key": "tipo",
+              "value": "logica"
+            }
+          ]
+        },
+        "description": "Exclusão lógica (soft delete).\nMarca o associado como inativo (ativo = false).\n\nSubstitua COLE_O_ID_AQUI pelo id retornado no passo 1."
+      },
+      "response": []
+    },
+    {
+      "name": "8. Exclusão Definitiva",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3000/associados/COLE_O_ID_AQUI?tipo=definitiva",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["associados", "COLE_O_ID_AQUI"],
+          "query": [
+            {
+              "key": "tipo",
+              "value": "definitiva"
+            }
+          ]
+        },
+        "description": "Exclusão definitiva (hard delete).\nRemove o registro de verdade.\n\nSubstitua COLE_O_ID_AQUI pelo id retornado no passo 1."
+      },
+      "response": []
+    },
+    {
+      "name": "9. Teste de Erro - CPF Duplicado",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"cpf_associado\": \"12345678901\",\n  \"nome_associado\": \"Outro João\",\n  \"email_associado\": \"outro@email.com\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:3000/associados",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["associados"]
+        },
+        "description": "Tenta criar um associado com CPF que já existe.\nDeve retornar status 409 (Conflict)."
+      },
+      "response": []
+    },
+    {
+      "name": "10. Teste de Erro - CPF Inválido",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"cpf_associado\": \"123\",\n  \"nome_associado\": \"Teste\",\n  \"email_associado\": \"teste@email.com\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:3000/associados",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["associados"]
+        },
+        "description": "Tenta criar com CPF inválido (menos de 11 dígitos).\nDeve retornar status 400 (Bad Request)."
+      },
+      "response": []
+    },
+    {
+      "name": "11. Teste de Erro - CPF Inexistente",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3000/associados/cpf/00000000000",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["associados", "cpf", "00000000000"]
+        },
+        "description": "Busca um CPF que não existe.\nDeve retornar status 404 (Not Found)."
+      },
+      "response": []
+    }
+  ]
+}

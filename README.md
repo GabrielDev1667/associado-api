@@ -65,7 +65,54 @@ A API estará disponível em: `http://localhost:3000`
 | DELETE | `/associados/:id?tipo=logica` | Exclusão lógica (padrão) |
 | DELETE | `/associados/:id?tipo=definitiva` | Exclusão definitiva |
 
-## Exemplos de uso (cURL)
+## Como testar a API
+
+### Opção recomendada: Postman
+
+A forma mais fácil e visual de testar é usando o **[Postman](https://www.postman.com/downloads/)**.
+
+#### Collection pronta (já configurada)
+
+Na pasta `postman/` deste projeto existe o arquivo:
+
+```
+postman/Associados_API.postman_collection.json
+```
+
+**Como importar no Postman:**
+
+1. Abra o Postman
+2. Clique em **Import** (canto superior esquerdo)
+3. Arraste o arquivo `Associados_API.postman_collection.json` ou clique em **Upload Files**
+4. Clique em **Import**
+
+Pronto — vão aparecer 11 requests já configuradas (criar, listar, buscar por CPF, atualizar, exclusões e testes de erro).
+
+**Importante:** nas requests **5 (Buscar por ID)**, **6 (Atualizar)**, **7 (Exclusão Lógica)** e **8 (Exclusão Definitiva)** existe o texto `COLE_O_ID_AQUI`.
+
+1. Execute primeiro a request **1. Criar Associado**
+2. Copie o valor do campo `id` que veio na resposta
+3. Substitua `COLE_O_ID_AQUI` pelo id copiado nas requests 5, 6, 7 e 8
+
+#### Criar requests manualmente (opcional)
+
+1. Baixe e instale o Postman
+2. Crie uma nova request
+3. Escolha o método (GET, POST, PUT, DELETE)
+4. Cole a URL (ex: `http://localhost:3000/associados`)
+5. Em requests POST/PUT, vá na aba **Body** → **raw** → **JSON** e cole o corpo
+6. Clique em **Send**
+
+Exemplo de body para criar associado:
+```json
+{
+  "cpf_associado": "12345678901",
+  "nome_associado": "João da Silva",
+  "email_associado": "joao@email.com"
+}
+```
+
+### Opção alternativa: cURL (terminal)
 
 > **Importante:** os exemplos abaixo usam sintaxe de terminal **Bash**.
 > - No **Linux** e **macOS** funciona direto.
