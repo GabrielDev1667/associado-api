@@ -1,0 +1,17 @@
+{
+  "name": "associado-api",
+  "version": "1.0.0",
+  "description": "API CRUD de Associados de Clube - Server-Side",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "nodemon src/server.js"
+  },
+  "keywords": ["api", "crud", "associados", "nodejs"],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "express": "^4.21.0"
+  }
+}
